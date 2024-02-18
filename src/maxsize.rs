@@ -1,3 +1,37 @@
+//! Part of this file contains code derived from the file `turbojpeg.c` from libjpeg-turbo.
+//! License of the file `turbojpeg.c` is copied here.
+//!
+//! ## License of `turbojpeg.c` from libjpeg-turbo
+//!
+//! ```text
+//! Copyright (C)2009-2023 D. R. Commander.  All Rights Reserved.
+//! Copyright (C)2021 Alex Richardson.  All Rights Reserved.
+//!
+//! Redistribution and use in source and binary forms, with or without
+//! modification, are permitted provided that the following conditions are met:
+//!
+//! - Redistributions of source code must retain the above copyright notice,
+//!   this list of conditions and the following disclaimer.
+//! - Redistributions in binary form must reproduce the above copyright notice,
+//!   this list of conditions and the following disclaimer in the documentation
+//!   and/or other materials provided with the distribution.
+//! - Neither the name of the libjpeg-turbo Project nor the names of its
+//!   contributors may be used to endorse or promote products derived from this
+//!   software without specific prior written permission.
+//!
+//! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS",
+//! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+//! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+//! ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+//! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+//! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+//! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+//! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+//! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+//! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+//! POSSIBILITY OF SUCH DAMAGE.
+//! ```
+
 use crate::SamplingFactor;
 
 /// The maximum size of the buffer (in bytes) required to hold a JPEG image with the given parameters.
@@ -5,7 +39,9 @@ use crate::SamplingFactor;
 /// ## Note
 /// The resulting size may be larger than original image.
 ///
-/// This implementation is direct translation of tj3JPEGBufSize from turbojpeg.
+/// This implementation is translation of tj3JPEGBufSize from `turbojpeg.c` from libjpeg-turbo.
+/// It might be considered to be a derivative work of the original file.
+/// The license of original file is attached at the start of this file.
 ///
 /// ## Example
 /// ```
@@ -18,7 +54,7 @@ use crate::SamplingFactor;
 ///     .expect("image size too large");
 ///
 /// let mut buffer = Vec::<u8>::with_capacity(buf_size);
-/// // encode image into buffer
+/// // encode image into the buffer
 /// ```
 pub fn max_output_size(width: u16, height: u16, sampling_factor: SamplingFactor) -> u64 {
     let (mcu_width, mcu_height) = sampling_factor.mcu_size();
