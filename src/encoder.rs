@@ -167,6 +167,19 @@ impl SamplingFactor {
             F_1_1 | F_2_1 | F_1_2 | F_2_2 | R_4_4_4 | R_4_4_0 | R_4_2_2 | R_4_2_0
         )
     }
+
+    /// MCU block width and height (in pixels) for a given level of chrominance subsampling.
+    /// MCU block sizes:
+    /// - 8x8 for no subsampling or grayscale
+    /// - 16x8 for 4:2:2
+    /// - 8x16 for 4:4:0
+    /// - 16x16 for 4:2:0
+    /// - 32x8 for 4:1:1
+    /// - 8x32 for 4:4:1
+    pub(crate) fn mcu_size(self) -> (u8, u8) {
+        let (w, h) = self.get_sampling_factors();
+        (w * 8, h * 8)
+    }
 }
 
 pub(crate) struct Component {

@@ -39,12 +39,14 @@ mod fdct;
 mod huffman;
 mod image_buffer;
 mod marker;
+mod maxsize;
 mod quantization;
 mod writer;
 
 pub use encoder::{ColorType, Encoder, JpegColorType, SamplingFactor};
 pub use error::EncodingError;
 pub use image_buffer::{cmyk_to_ycck, rgb_to_ycbcr, ImageBuffer};
+pub use maxsize::max_output_size;
 pub use quantization::QuantizationTableType;
 pub use writer::{Density, JfifWrite};
 
